@@ -1015,7 +1015,8 @@ body.drawer-open .actioncontrols{visibility:visible!important;pointer-events:aut
  .deepcontrol{max-width:calc(100vw - 24px);flex-wrap:wrap;justify-content:flex-end}
  .deepcontrol button{max-width:150px!important}
 }
-</style></head><body>
+</style><style>.bm-koyu{filter:brightness(.42) contrast(1.35) saturate(.6)}</style>
+</head><body>
 <div id="app">
 <aside>
  <div class="fiq-brand-lockup">
@@ -1085,7 +1086,7 @@ focusInitialView();requestAnimationFrame(()=>{map.invalidateSize(false);focusIni
 // (Leaflet.heat 'pane' opsiyonunu yok sayıp overlayPane'e koyar; z-sıra DOM-ekleme sırasıyla sağlanır).
 // ---------- ALTLIK (eski 05 ile aynı kaynaklar) ----------
 const BM={
- 'Koyu':()=>L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri, HERE, Garmin, © OpenStreetMap',maxZoom:16}),
+ 'Koyu':()=>L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri, HERE, Garmin, © OpenStreetMap',maxZoom:16,className:'bm-koyu'}),
  'Açık':()=>L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap katkıda bulunanlar',maxZoom:19}),
  'Uydu':()=>L.layerGroup([L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri'}),
    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}')]),
