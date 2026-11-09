@@ -1051,7 +1051,7 @@ body.drawer-open .actioncontrols{visibility:visible!important;pointer-events:aut
  <div class="mapui deepcontrol"><button id="b_akad">★ Derin Karar Analizleri</button></div>
  <div class="mapui" style="bottom:12px;left:12px">
    <div class="binfo"><span class="bl">Harita Türü</span>
-    <select id="bmap" aria-label="Harita türü"><option>Koyu</option><option>Açık</option><option>Uydu</option><option>Yok</option></select>
+    <select id="bmap" aria-label="Harita türü"><option>Koyu</option><option>Açık</option><option selected>Uydu</option><option>Yok</option></select>
     <span id="bm_status" role="status" aria-live="polite"></span><span id="crd">—</span></div>
  </div>
 </div>
@@ -1096,7 +1096,7 @@ function setBMStatus(msg){bmStatus.textContent=msg;bmStatus.classList.toggle('on
 function makeBM(name){const token=++bmGeneration,layer=BM[name](),tiles=[];setBMStatus('');
  if(layer instanceof L.TileLayer)tiles.push(layer);else if(layer.eachLayer)layer.eachLayer(x=>{if(x instanceof L.TileLayer)tiles.push(x)});
  let failures=0;tiles.forEach(t=>{t.on('tileerror',()=>{if(token!==bmGeneration)return;failures++;if(failures>=3)setBMStatus('Harita zemini yüklenemedi; veri katmanları çalışıyor.')})});return layer}
-let curBM=makeBM('Koyu').addTo(map);
+let curBM=makeBM('Uydu').addTo(map);
 document.getElementById('bmap').addEventListener('change',e=>{const next=makeBM(e.target.value).addTo(map);map.removeLayer(curBM);curBM=next});
 map.on('mousemove',e=>{document.getElementById('crd').textContent=e.latlng.lat.toFixed(4)+', '+e.latlng.lng.toFixed(4)});
 // ---------- yardımcılar ----------
